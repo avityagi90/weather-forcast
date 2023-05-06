@@ -5,6 +5,7 @@ import com.weather.weatherforcast.config.security.JwtTokenUtil;
 import com.weather.weatherforcast.config.security.JwtUserDetailsService;
 import com.weather.weatherforcast.config.security.dto.JwtRequest;
 import com.weather.weatherforcast.config.security.dto.JwtResponse;
+import com.weather.weatherforcast.response.WeatherForcastResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Api(tags = "Authentication")
 @RestController
@@ -35,6 +37,7 @@ public class JwtAuthenticationController {
     private JwtUserDetailsService userDetailsService;
 
     @PostMapping(value = "/authenticate")
+    @ApiOperation(value = "Create Auth Token for User", response = ResponseEntity.class, code = 200)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());

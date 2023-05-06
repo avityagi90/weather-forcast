@@ -12,6 +12,8 @@ import com.weather.weatherforcast.service.helper.DaywiseDataAggregationHelper;
 import com.weather.weatherforcast.util.CommonUtils;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +38,9 @@ public class WeatherForcastService {
     @Autowired
     private WeatherCache weatherCache;
 
+    private Logger logger = LoggerFactory.getLogger(WeatherForcastService.class);
+
+
     public int getNumberOfDays(Map<String, String> httpHeaders) {
         Integer numberOfDaysFromHeader = CommonUtils
                 .getIntValueFromHeaders(httpHeaders, ApplicationConstants.HEADER_NAME_DAYS);
@@ -48,6 +53,7 @@ public class WeatherForcastService {
     public WeatherForcastResponse getCityWeatherForcastForGivenDays(String cityName, int numberOfDays)
             throws IOException, WeatherForcastException {
 
+        logger.info("Weather call params, cityName :"+cityName + " numberOfDays:" + numberOfDays);
         //get data from open weather API
         Map<String, Object> params = openWeatherApiCallHelper.buildRequestParams(cityName, numberOfDays, ApplicationConstants.TEMP_UNIT_CELSIUS);
         Map<String, String> headers = new HashMap<>();
@@ -57,6 +63,8 @@ public class WeatherForcastService {
                     .sendGetRequest(params, headers, CallType.FORECAST_CITY);
         } catch (Exception ex){
             //log exception
+            //TODO - test this
+            logger.error("Open weather call failure", ex);
             return getFromCacheResiliency(cityName);
         }
         //Parse response from the upstream into DTO (Local/provided)
