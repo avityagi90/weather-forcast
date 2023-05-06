@@ -1,5 +1,6 @@
 package com.weather.weatherforcast.service;
 
+import com.weather.weatherforcast.cache.WeatherCache;
 import com.weather.weatherforcast.constants.ApplicationConstants;
 import com.weather.weatherforcast.exception.WeatherForcastException;
 import com.weather.weatherforcast.http.CallType;
@@ -32,6 +33,9 @@ public class WeatherForcastService {
     @Autowired
     private DaywiseDataAggregationHelper daywiseDataAggregationHelper;
 
+    @Autowired
+    private WeatherCache weatherCache;
+
     public int getNumberOfDays(Map<String, String> httpHeaders) {
         Integer numberOfDaysFromHeader = CommonUtils
                 .getIntValueFromHeaders(httpHeaders, ApplicationConstants.HEADER_NAME_DAYS);
@@ -47,8 +51,14 @@ public class WeatherForcastService {
         //get data from open weather API
         Map<String, Object> params = openWeatherApiCallHelper.buildRequestParams(cityName, numberOfDays, ApplicationConstants.TEMP_UNIT_CELSIUS);
         Map<String, String> headers = new HashMap<>();
-        CloseableHttpResponse closeableHttpResponse = openWeatherApiCallHelper
-                .sendGetRequest(params, headers, CallType.FORECAST_CITY);
+        CloseableHttpResponse closeableHttpResponse = null;
+        try {
+            closeableHttpResponse = openWeatherApiCallHelper
+                    .sendGetRequest(params, headers, CallType.FORECAST_CITY);
+        } catch (Exception ex){
+            //log exception
+            return getFromCacheResiliency(cityName);
+        }
         //Parse response from the upstream into DTO (Local/provided)
         OpenWeatherResponse openWeatherResponse = openWeatherApiCallHelper.getResponseObject(closeableHttpResponse,
                 OpenWeatherResponse.class);
@@ -61,10 +71,19 @@ public class WeatherForcastService {
 
         Map<Date, List<DayRecord>> filteredMap = getFilteredMap(map, numberOfDays);
 
+
+
         WeatherForcastResponse weatherForcastResponse = daywiseDataAggregationHelper
                 .prepareDayWiseFoprcasting(filteredMap);
 
+        //Adding to cache for resiliency
+        weatherCache.setCityData(cityName, weatherForcastResponse);
+
         return weatherForcastResponse;
+    }
+
+    private WeatherForcastResponse getFromCacheResiliency(String cityName) {
+        return weatherCache.getCityData(cityName);
     }
 
     private Map<Date, List<DayRecord>> getFilteredMap(Map<Date, List<DayRecord>> map, int numberOfDays) {
