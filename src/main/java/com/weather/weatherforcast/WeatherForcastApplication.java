@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 		"com.weather.weatherforcast.controller",
 		"com.weather.weatherforcast.service",
 		"com.weather.weatherforcast.http",
+		"com.weather.weatherforcast.cache",
 		"com.weather.weatherforcast.config"})
 public class WeatherForcastApplication {
 
