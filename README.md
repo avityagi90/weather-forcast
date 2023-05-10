@@ -17,3 +17,7 @@ Resiliency :
 
 CI 
   - CI pipeline in Github
+
+Design Principles
+  - Builder
+  - Template - HttpUtil

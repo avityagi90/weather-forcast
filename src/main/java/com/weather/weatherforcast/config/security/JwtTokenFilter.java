@@ -2,6 +2,8 @@ package com.weather.weatherforcast.config.security;
 
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,6 +33,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
 
+    private Logger logger = LoggerFactory.getLogger(JwtTokenFilter.class);
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -54,9 +58,9 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             try {
                 username = jwtTokenUtil.getUsernameFromToken(jwtToken);
             } catch (IllegalArgumentException e) {
-                System.out.println("Unable to get JWT Token");
+                logger.error("Unable to get JWT Token", e);
             } catch (ExpiredJwtException e) {
-                System.out.println("JWT Token has expired");
+                logger.error("JWT Token has expired", e);
             }
         } else {
             logger.warn("JWT Token does not begin with Bearer String");
