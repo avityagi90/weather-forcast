@@ -1,0 +1,71 @@
+<mxfile host="app.diagrams.net" modified="2023-05-11T02:57:10.716Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="FToOaHhPxqgoAOq4dvjA" version="21.2.9" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1306" dy="811" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="vhhNkfaEkQBYyKJiAGOd-0">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="223" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-0" value="Admin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="80" y="208" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-2" value="Admin(UserName/Password Auth)&lt;br&gt;/authenticate&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;User/Consumer(Json Token)&lt;br&gt;/v1/city/{cityName}" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="334" y="190" width="250" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-3" value="/authenticate" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="215" y="200" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-4" value="WeatherForcast &lt;br&gt;App" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="394" y="140" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-5" value="Open Weather API" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="827" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.58;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="vhhNkfaEkQBYyKJiAGOd-2" target="vhhNkfaEkQBYyKJiAGOd-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="620" y="370" as="sourcePoint" />
+            <mxPoint x="670" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-7" value="city/count" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="660" y="308" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-8" value="Weather Forcasting&lt;br&gt;3 Hourly" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="vhhNkfaEkQBYyKJiAGOd-5" target="vhhNkfaEkQBYyKJiAGOd-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="630" y="420" as="sourcePoint" />
+            <mxPoint x="680" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.017;exitY=0.396;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.726;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="vhhNkfaEkQBYyKJiAGOd-9" target="vhhNkfaEkQBYyKJiAGOd-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="373" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-9" value="User" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="80" y="343" width="120" height="77" as="geometry" />
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-11" value="city/days" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="235" y="350" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-15" value="Json Token" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="vhhNkfaEkQBYyKJiAGOd-2" target="vhhNkfaEkQBYyKJiAGOd-0">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="40" y="340" as="sourcePoint" />
+            <mxPoint x="90" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-16" value="Weather Forcasting&lt;br&gt;Daywise" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.846;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="vhhNkfaEkQBYyKJiAGOd-2" target="vhhNkfaEkQBYyKJiAGOd-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="130" y="510" as="sourcePoint" />
+            <mxPoint x="180" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vhhNkfaEkQBYyKJiAGOd-17" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;High Level Design&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="55" y="35" width="170" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
