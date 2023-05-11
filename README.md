@@ -1,3 +1,5 @@
+HLD : https://github.com/avityagi90/weather-forcast/blob/main/WeatherForcast.drawio.png
+
 Swagger - http://localhost:8080/weather-application/swagger-ui/index.html#/
 
 API Curl - To get Weather Prediction for a city for next 3 (Or pass number of day) :
