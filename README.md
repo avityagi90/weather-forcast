@@ -7,6 +7,11 @@ curl --location --request GET 'http://localhost:8080/weather-application/weather
 Doekrized Application
   - Install Dockerhub and refer for docker command :
        https://spring.io/guides/topicals/spring-boot-docker/ 
+  - docker build -t weather-forcast-app/weather-forcast .
+  - docker ps
+  - docker logs  weather-forcast
+  - ss -tulnp | grep 8080 
+  - docker images
 
 Spring Security
   - Username/Password authentication for Admin
