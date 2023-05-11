@@ -7,6 +7,8 @@ import com.google.gson.reflect.TypeToken;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -19,13 +21,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
-
-import com.fasterxml.jackson.databind.AnnotationIntrospector;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 
 public class CommonUtils {
 
@@ -51,7 +46,7 @@ public class CommonUtils {
             if (httpHeaders.get(headerName) != null) {
                 return Integer.parseInt(httpHeaders.get(headerName));
             }
-        } catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             //handle later
         }
         return null;
@@ -59,25 +54,25 @@ public class CommonUtils {
 
     public static Integer getIntValue(String intStr) {
         try {
-                return Integer.parseInt(intStr);
-        } catch (NumberFormatException ex){
+            return Integer.parseInt(intStr);
+        } catch (NumberFormatException ex) {
             //handle later
         }
         return null;
     }
 
     public static <T> T cast(String json, Class<T> type) throws IOException {
-        if(StringUtils.isBlank(json)) {
+        if (StringUtils.isBlank(json)) {
             return null;
         }
         return fasterMapper.readValue(json, type);
     }
 
     public static <T> List<T> castList(String jsonArray, Class<T> clazz) {
-        if(StringUtils.isBlank(jsonArray)) {
+        if (StringUtils.isBlank(jsonArray)) {
             return Collections.emptyList();
         }
-        if(clazz == null) {
+        if (clazz == null) {
             return Collections.emptyList();
         }
         Type typeOfT = TypeToken.getParameterized(List.class, clazz).getType();
@@ -86,7 +81,7 @@ public class CommonUtils {
 
     public static String getLocalDate(long dt) {
         //Time given in seconds
-        Date date = new Date(dt*1000);
+        Date date = new Date(dt * 1000);
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         format.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
         String formatted = format.format(date);

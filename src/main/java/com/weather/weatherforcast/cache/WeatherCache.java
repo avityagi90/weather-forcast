@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Component
 public class WeatherCache {
-    Map<String, WeatherForcastResponse> weatherCache = new HashMap<>();
+    private Map<String, WeatherForcastResponse> weatherCache = new HashMap<>();
 
     //key in the form of city_date
     public WeatherForcastResponse getCityData(String city){
